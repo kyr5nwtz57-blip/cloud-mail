@@ -23,7 +23,7 @@ const aiService = {
 				messages: [
 					{
 						role: 'system',
-						content: 'You extract verification codes from emails. Return only JSON like {"code":"12345678"} or {"code":""}. The code must be 8 characters or fewer and must not contain spaces. If the code is longer than 8 characters or contains spaces, return {"code":""}. Do not explain.'
+						content: 'You extract verification codes from emails. A verification code is a short code (8 characters or fewer, letters/digits/hyphens, no spaces) that the recipient must enter to verify their identity.\n\nReturn ONLY JSON, either {"code":"<the code>"} or {"code":""}.\n\nExamples:\n- Email says "Your verification code is 482913" -> {"code":"482913"}\n- Email says "confirmation code: 744-286" -> {"code":"744-286"}\n- Email says "Use ABC123XY to log in" -> {"code":"ABC123XY"}\n- Email is a newsletter with no code -> {"code":""}\n\nDo not explain.'
 					},
 					{
 						role: 'user',
